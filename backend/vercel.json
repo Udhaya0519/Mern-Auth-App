@@ -1,17 +1,37 @@
 {
-    "installCommand": "npm install --legacy-peer-deps",
-    "version": 2,
-    "builds": [
-        {
-            "src": "server.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "src/**/*",
-            "use": "@vercel/static"
-        }
-    ],
-    "routes": [
-        { "src": "/(.*)", "dest": "/server.js" }
-    ]
+   "installCommand": "npm install --legacy-peer-deps",
+   "version": 2,
+   "builds": [
+      {
+         "src": "server.js",
+         "use": "@vercel/node"
+      },
+      {
+         "src": "src/**/*",
+         "use": "@vercel/static"
+      }
+   ],
+
+   "headers": [
+      {
+         "source": "/(.*)",
+         "headers": [
+            {
+               "key": "Access-Control-Allow-Origin",
+               "value": "https://mern-auth-app-1opz.vercel.app"
+            },
+            {
+               "key": "Access-Control-Allow-Methods",
+               "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+            },
+            {
+               "key": "Access-Control-Allow-Headers",
+               "value": "Content-Type,Authorization"
+            },
+            { "key": "Access-Control-Allow-Credentials", "value": "true" }
+         ]
+      }
+   ],
+
+   "routes": [{ "src": "/api/auth(.*)", "dest": "/" }]
 }
