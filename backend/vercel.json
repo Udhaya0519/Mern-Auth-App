@@ -33,5 +33,5 @@
       }
    ],
 
-   "routes": [{ "src": "/api/auth(.*)", "dest": "/" }]
+   "routes": [{ "src": "/api/auth(.*)", "dest": "/server.js" }]
 }
