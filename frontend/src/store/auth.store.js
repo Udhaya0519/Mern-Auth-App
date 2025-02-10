@@ -2,7 +2,9 @@ import { create } from 'zustand'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-const API_URL = import.meta.env.mode === "development" ? "http://localhost:3000/api/auth" : "/api/auth"
+// const API_URL = import.meta.env.mode === "development" ? "http://localhost:3000/api/auth" : "/api/auth"
+const API_URL = import.meta.env.VITE_API_URL
+
 axios.defaults.withCredentials = true //axios add cookies to the header everytime request is made
 
 export const useAuthStore = create((set) => ({
