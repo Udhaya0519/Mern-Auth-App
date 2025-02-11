@@ -136,7 +136,12 @@ export const login = async(req,res) => {
 
 
 export const logout = async(req,res) => {
-    res.clearCookie("token")
+    res.cookie("token", "", {
+        httpOnly: true,
+        secure: true,   // Required for Vercel & HTTPS
+        sameSite: "None", // Required for cross-origin cookies
+        expires: new Date(0), // Expire immediately
+      });
     res.json({success:true, message:"logged out successfully"})
 }
 
