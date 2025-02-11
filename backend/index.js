@@ -33,14 +33,13 @@ app.use('/api/auth', authRoutes)
         // }
         
         
-// const PORT = process.env.PORT; 
+const PORT = 3000; 
 
 
-// app.listen(PORT,() => {
-//     connectDB();
-//     console.log('connected to server on port:',PORT);
-// })
+app.listen(PORT,() => {
+    connectDB();
+    console.log('connected to server on port:',PORT);
+})
 
-connectDB();
 
 

@@ -5,6 +5,8 @@ import { verifyToken } from '../middlewares/verifyToken.js';
 
 const router = express.Router();
 
+router.get('/', (req,res) => { res.json("Server running...")})
+
 router.get('/check-auth', verifyToken, checkAuth)
 
 router.post('/signup',signup)
