@@ -161,7 +161,7 @@ export const forgotPassword = async(req, res) => {
 
         await user.save()
     
-        await sendForgotPasswordEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`)
+        await sendForgotPasswordEmail(user.email, `https://mern-auth-app-pi.vercel.app/reset-password/${resetToken}`)
     
         res.status(200).json({ success:true, message: "Email sent to reset password"})
 
