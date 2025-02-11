@@ -17,8 +17,15 @@ app.use(express.json())
 app.use(cookieParser())
 
 
-app.use(cors({ origin: ["https://mern-auth-app-pi.vercel.app, https://mern-auth-app-udhaya-js-projects.vercel.app"], credentials:true}))
-
+app.use(
+    cors({
+      origin: [
+        "https://mern-auth-app-pi.vercel.app",
+        "https://mern-auth-app-udhaya-js-projects.vercel.app",
+      ],
+      credentials: true,
+    })
+  );
 
 
 
