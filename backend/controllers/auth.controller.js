@@ -3,7 +3,7 @@ import crypto from "crypto"
 
 import { User } from '../models/user.model.js'
 import { generateTokenAndSetCookie } from '../utils/generateTokenAndSetCookie.js'
-import { sendForgotPasswordEmail, sendResetPasswordSuccessEmail, sendVerficationEmail, sendWelcomeEmail } from '../mailtrap/mails.js'
+import { sendForgotPasswordEmail, sendResetPasswordSuccessEmail, sendVerficationEmail, sendWelcomeEmail } from '../Mails/mails.js'
 
 
 export const checkAuth = async (req, res) => {
@@ -87,7 +87,7 @@ export const verifyEmail = async (req, res) => {
 
         await user.save()
 
-        await sendWelcomeEmail(user.email, user.name)
+        await sendWelcomeEmail(user.email, process.env.CLIENT_URL)
 
         res.status(200).json({success:true, message:"Email verified successfully", user: {...user._doc, password:undefined}})
         
@@ -166,7 +166,7 @@ export const forgotPassword = async(req, res) => {
 
         await user.save()
     
-        await sendForgotPasswordEmail(user.email, `https://mern-auth-app-pi.vercel.app/reset-password/${resetToken}`)
+        await sendForgotPasswordEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`)
     
         res.status(200).json({ success:true, message: "Email sent to reset password"})
 
